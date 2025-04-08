@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sonido al hacer clic en imagen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        html {
+            --s: 200px;
+            /* control the size*/
+            --c1: #1d1d1d;
+            --c2: #4e4f51;
+            --c3: #757575;
+
+            background:
+                repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 50%) calc(var(--s)/2) calc(var(--s)*tan(30deg)/2),
+                repeating-conic-gradient(from 30deg, var(--c1) 0 60deg, var(--c2) 0 120deg, var(--c3) 0 50%);
+            background-size: var(--s) calc(var(--s)*tan(30deg));
+        }
+
+        body {
+            text-align: center;
+            padding-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            color: #ff4081;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2em;
+            color: #ff4081;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            width: 300px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        #mensaje {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            height: auto;
+        }
+
+        #mensaje.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Don't click the image!</h1>
+    <h1>¡No hagas click en la imagen!</h1>
+
+    <img src="berto.jpg" alt="Haz clic aquí" onclick="playSound()">
+
+    <audio id="miSonido" src="gmido.mp3" preload="auto"></audio>
+
+    <div id="mensaje">
+        <h2>bruh</h2>
+    </div>
+
+    <script>
+        function playSound() {
+            const sonido = document.getElementById("miSonido");
+            const mensaje = document.getElementById("mensaje");
+
+            sonido.currentTime = 0;
+            sonido.play();
+
+            // Muestra el mensaje
+            mensaje.classList.add("visible");
+
+            // Lo oculta después de 3 segundos
+            setTimeout(() => {
+                mensaje.classList.remove("visible");
+            }, 1000);
+        }
+    </script>
+
+</body>
+
+</html>
