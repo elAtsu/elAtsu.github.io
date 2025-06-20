@@ -57,20 +57,29 @@
   <audio id="audio" src="balatro.mp3"></audio>
 
   <script>
-    function buscar() {
-      const input = document.getElementById("searchInput").value.trim();
-      if (input !== "") {
-        const img = document.getElementById("mainImage");
-        const audio = document.getElementById("audio");
-        const originalSrc = img.src;
-        img.src = "balatro.gif"; // Imagen temporal
-        audio.play();
-        setTimeout(() => {
-          img.src = originalSrc;
-        }, 3000); // 3 segundos
-      }
+  function buscar() {
+    const input = document.getElementById("searchInput").value.trim();
+    if (input !== "") {
+      const img = document.getElementById("mainImage");
+
+      const audios = ["voice1.mp3", "voice2.mp3", "voice3.mp3"];
+
+      const audioFile = audios[Math.floor(Math.random() * audios.length)];
+
+      const audio = document.getElementById("audio");
+      audio.src = audioFile; 
+      audio.load(); 
+      audio.play();
+
+      const originalSrc = img.src;
+      img.src = "balatro.gif"; 
+      
+      setTimeout(() => {
+        img.src = originalSrc;
+      }, 2000);
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
