@@ -11,6 +11,12 @@
       background-attachment: fixed;
       background-size: 100vw 100vh;
     }
+    .centrador {
+      margin: auto;
+      width: 50%;
+      border: 3px solid green;
+      padding: 10px;
+    }
 
     img {
       max-width: 500px;
@@ -47,39 +53,40 @@
   </style>
 </head>
 <body>
-  <img id="mainImage" src="balatro.png" alt="Balatro Balatrez" />
+  <div class="centrador">
+    <img id="mainImage" src="balatro.png" alt="Balatro Balatrez" />
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Pregúntale algo..." />
+      <button onclick="buscar()">Preguntar</button>
+    </div>
   
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Pregúntale algo..." />
-    <button onclick="buscar()">Preguntar</button>
-  </div>
-
-  <audio id="audio" src="audio1.mp3"></audio>
-
-  <script>
-  function buscar() {
-    const input = document.getElementById("searchInput").value.trim();
-    if (input !== "") {
-      const img = document.getElementById("mainImage");
-
-      const audios = ["voice1.mp3", "voice2.mp3", "voice3.mp3"];
-
-      const audioFile = audios[Math.floor(Math.random() * audios.length)];
-
-      const audio = document.getElementById("audio");
-      audio.src = audioFile; 
-      audio.load(); 
-      audio.play();
-
-      const originalSrc = img.src;
-      img.src = "balatro.gif"; 
-      
-      setTimeout(() => {
-        img.src = originalSrc;
-      }, 1975);
+    <audio id="audio" src="audio1.mp3"></audio>
+  
+    <script>
+    function buscar() {
+      const input = document.getElementById("searchInput").value.trim();
+      if (input !== "") {
+        const img = document.getElementById("mainImage");
+  
+        const audios = ["voice1.mp3", "voice2.mp3", "voice3.mp3"];
+  
+        const audioFile = audios[Math.floor(Math.random() * audios.length)];
+  
+        const audio = document.getElementById("audio");
+        audio.src = audioFile; 
+        audio.load(); 
+        audio.play();
+  
+        const originalSrc = img.src;
+        img.src = "balatro.gif"; 
+        
+        setTimeout(() => {
+          img.src = originalSrc;
+        }, 1975);
+      }
     }
-  }
-</script>
-
+  </script>
+  </div>
 </body>
 </html>
