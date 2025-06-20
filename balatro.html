@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asistente Balatro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+      padding-top: 50px;
+    }
+    img {
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .search-container {
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      border: none;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <a>Pregúntale cualquier duda a Balatro Balatrez</a>
+
+  <img id="mainImage" src="balatro.png" alt="Balatro Balatrez" />
+  
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar algo..." />
+    <button onclick="buscar()">Preguntar</button>
+  </div>
+
+  <audio id="audio" src="balatro.mp3"></audio>
+
+  <script>
+    function buscar() {
+      const input = document.getElementById("searchInput").value.trim();
+      if (input !== "") {
+        const img = document.getElementById("mainImage");
+        const audio = document.getElementById("audio");
+        const originalSrc = img.src;
+        img.src = "balatro.gif"; // Imagen temporal
+        audio.play();
+        setTimeout(() => {
+          img.src = originalSrc;
+        }, 3000); // 3 segundos
+      }
+    }
+  </script>
+
+</body>
+</html>
